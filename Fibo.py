@@ -6,12 +6,17 @@ import sys
 
 
 class Fibo():
+    """_summary_
+    """
     def __init__ (self, n:int) -> None:
         """ 
         Where we store the calculated values of the fibonacci sequence
         """
-        self.dico = {0:1,1:1}
+        self.dico = {1:1,2:1}
         self.n = n
+        
+    def __repr__(self) -> str:
+        return str(self.calculate_iter("results.txt"))
         
     def read_data(self, file:str) -> None:
         """
@@ -43,7 +48,7 @@ class Fibo():
         
         except:
             max_key = max(self.dico.keys())
-            while max_key <= self.n:
+            while max_key < self.n:
                 max_key += 1
                 self.dico[max_key] = self.dico[max_key - 1] + self.dico[max_key-2]
             self.write_data(file)
